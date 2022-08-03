@@ -16,7 +16,7 @@
 	<description>API REST com Spring Boot e Spring Cloud</description>
 	<properties>
 		<java.version>17</java.version>
-		<!-- testcontainers.version>1.17.3</testcontainers.version -->
+		<testcontainers.version>1.17.3</testcontainers.version>
 	</properties>
 	<dependencies>
 
@@ -129,11 +129,11 @@
 			<scope>test</scope>
 		</dependency -->
 
-		<!-- dependency>
+		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>test</scope>
-		</dependency -->
+		</dependency>
 
 		<!-- dependency>
 			<groupId>org.testcontainers</groupId>
@@ -144,13 +144,13 @@
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
-			<!-- dependency>
+			<dependency>
 				<groupId>org.testcontainers</groupId>
 				<artifactId>testcontainers-bom</artifactId>
 				<version>${testcontainers.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency -->
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
