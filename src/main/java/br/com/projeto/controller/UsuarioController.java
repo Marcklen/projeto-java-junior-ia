@@ -21,6 +21,7 @@ import br.com.projeto.model.dto.UsuarioDTO;
 import br.com.projeto.model.dto.UsuarioUpdateDTO;
 import br.com.projeto.service.UsuarioService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -35,6 +36,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService service;
 	
+	@ApiOperation("Buscar um Usuario por sua ID")
 	@GetMapping(value = ID)
 	public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable Integer id) {
 		return ResponseEntity.
@@ -42,6 +44,7 @@ public class UsuarioController {
 						mapper.map(service.buscarPorId(id), UsuarioDTO.class));
 	}
 	
+	@ApiOperation("Buscar Todos os Usuarios Cadastrados")
 	@GetMapping
 	public ResponseEntity<List<UsuarioDTO>> buscarTodos() {
 		return ResponseEntity.ok()
@@ -50,7 +53,7 @@ public class UsuarioController {
 						.map(x -> mapper.map(x, UsuarioDTO.class))
 						.collect(Collectors.toList()));
 	}
-	
+	@ApiOperation("Criar um Novo Usuario")
 	@PostMapping
 	public ResponseEntity<UsuarioDTO> criar(@RequestBody UsuarioDTO dto) {
 		URI uri = ServletUriComponentsBuilder
@@ -59,6 +62,7 @@ public class UsuarioController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation("Atualizar um Usuario por sua ID")
 	@PutMapping(value = ID)
 	public ResponseEntity<UsuarioDTO> atualizar (@PathVariable Integer id, 
 			@RequestBody UsuarioUpdateDTO dto){
@@ -67,6 +71,7 @@ public class UsuarioController {
 		
 	}
 	
+	@ApiOperation("Deletar um Usuario por sua ID")
 	@DeleteMapping(value = ID)
 	public ResponseEntity<UsuarioDTO> deletar (@PathVariable Integer id){
 		service.deletar(id);
