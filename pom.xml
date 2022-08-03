@@ -16,34 +16,34 @@
 	<description>API REST com Spring Boot e Spring Cloud</description>
 	<properties>
 		<java.version>17</java.version>
-		<testcontainers.version>1.17.3</testcontainers.version>
+		<!-- testcontainers.version>1.17.3</testcontainers.version -->
 	</properties>
 	<dependencies>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
-		</dependency>
+		</dependency -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
-		</dependency>
+		</dependency -->
 
 		<dependency>
 			<groupId>org.modelmapper</groupId>
@@ -87,23 +87,23 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -117,40 +117,40 @@
 			<version>2.9.2</version>
 		</dependency>
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>kafka</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
-		<dependency>
+		<!-- dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>rabbitmq</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency -->
 
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
+			<!-- dependency>
 				<groupId>org.testcontainers</groupId>
 				<artifactId>testcontainers-bom</artifactId>
 				<version>${testcontainers.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
+			</dependency -->
 		</dependencies>
 	</dependencyManagement>
 

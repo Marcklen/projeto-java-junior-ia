@@ -1,6 +1,6 @@
 package br.com.projeto.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,22 +19,30 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "TB_USUARIO")
 public class Usuario {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-    @Column(name = "name", nullable = false)
+
+	@Column(name = "name", nullable = false)
 	private String name;
-    @Column(name = "login", nullable = false)
+	
+	@Column(name = "login", unique = true, nullable = false)
 	private String login;
-    @Column(name = "password", nullable = false)
+	
+	@Column(name = "password", nullable = false)
 	private String password;
-    @Column(name = "created_date", nullable = false)
-	private LocalDateTime createdDate;
-    @Column(name = "updated_date")
-	private LocalDateTime updatedDate;
-    @Column(name = "email", nullable = false)
-    private String email;
-    @Column(name = "admin", nullable = false)
-	private String admin;
+	
+	@Column(name = "created_date", nullable = false)
+	private LocalDate createdDate;
+	
+	@Column(name = "updated_date")
+	private LocalDate updatedDate;
+	
+	@Column(name = "email", unique = true, nullable = false)
+	private String email;
+
+	//@Column(name = "admin", nullable = false)
+	//private String admin;
+
 }

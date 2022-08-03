@@ -1,20 +1,28 @@
 package br.com.projeto.service.impl;
 
 import java.util.List;
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Service;
 
 import br.com.projeto.exception.UsuarioNaoEncontradoException;
 import br.com.projeto.model.Usuario;
+import br.com.projeto.model.dto.UsuarioDTO;
+import br.com.projeto.model.dto.UsuarioUpdateDTO;
 import br.com.projeto.repository.UsuarioRepository;
 import br.com.projeto.service.UsuarioService;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService{
 
-	private final UsuarioRepository usuarioRepository;
-
-	public UsuarioServiceImpl(UsuarioRepository usuarioRepository) {
-		super();
-		this.usuarioRepository = usuarioRepository;
-	}	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	@Autowired
+	private ModelMapper mapper;
+	
 	
 	@Override
 	public List<Usuario> buscarTodos() {
@@ -25,15 +33,15 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public Usuario buscarPorId(Integer id) {
 		// TODO Auto-generated method stub
-		return usuarioRepository.findById(id)
-				.orElseThrow(() -> 
-				new UsuarioNaoEncontradoException(id));
+		Optional<Usuario> obj = usuarioRepository.findById(id);
+		return obj.orElseThrow(() -> new UsuarioNaoEncontradoException(id));
 	}
 	
 	@Override
-	public Usuario criar(Usuario novoUsuario) {
+	public Usuario criar(UsuarioDTO dto) {
 		// TODO Auto-generated method stub
-		return null;
+		findByLogin(dto);
+		return usuarioRepository.save(mapper.map(dto, Usuario.class));
 	}
 
 	@Override
@@ -44,13 +52,22 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public Usuario atualizar(Integer id, Usuario atualizarUsuario) {
+	public Usuario atualizar(Integer id, UsuarioUpdateDTO dto) {
 		// TODO Auto-generated method stub
 		Usuario usuario = buscarPorId(id);
-		usuario.setLogin(atualizarUsuario.getLogin());
-		usuario.setName(atualizarUsuario.getName());
-		usuario.setEmail(atualizarUsuario.getEmail());
+		usuario.setLogin(dto.getLogin());
+		usuario.setName(dto.getName());
+		usuario.setEmail(dto.getEmail());
+		usuario.setUpdatedDate(dto.getUpdatedDate());
 		usuarioRepository.save(usuario);
 		return usuario;
+	}
+	
+	//metodo para saber se ja existe um login de usuario igual
+	private void findByLogin(UsuarioDTO dto) {
+		Optional<Usuario> user = usuarioRepository.findByLogin(dto.getLogin());
+		if(user.isPresent() && !user.get().getId().equals(dto.getId())) { 
+			throw new DataIntegrityViolationException("Login já cadastrado em nosso sistema!");
+		}
 	}
 }
