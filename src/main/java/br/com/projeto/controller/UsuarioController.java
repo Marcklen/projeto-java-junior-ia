@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +57,7 @@ public class UsuarioController {
 	}
 	@ApiOperation("Criar um Novo Usuario")
 	@PostMapping
-	public ResponseEntity<UsuarioDTO> criar(@RequestBody UsuarioDTO dto) {
+	public ResponseEntity<UsuarioDTO> criar(@RequestBody @Valid UsuarioDTO dto) {
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest().path(ID)
 				.buildAndExpand(service.criar(dto).getId()).toUri();
