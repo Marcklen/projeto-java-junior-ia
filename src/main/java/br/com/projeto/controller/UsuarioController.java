@@ -8,7 +8,9 @@ import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +18,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+//import br.com.projeto.model.Usuario;
 import br.com.projeto.model.dto.UsuarioDTO;
 import br.com.projeto.model.dto.UsuarioUpdateDTO;
 import br.com.projeto.service.UsuarioService;
+//import br.com.projeto.service.impl.UsuarioServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -29,6 +34,12 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/usuarios")
 @Api(tags = "Controller de Usuários")
 public class UsuarioController {
+	
+//	@Autowired
+//	private UsuarioServiceImpl serviceImpl;
+//	
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 	
 	private static final String ID = "/{id}";
 	
@@ -79,4 +90,12 @@ public class UsuarioController {
 		service.deletar(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+//	@PostMapping(value = "/logar")
+//	@ResponseStatus(HttpStatus.CREATED)
+//	public UsuarioDTO logar (@RequestBody @Valid UsuarioDTO usuario) {
+//		String senhaCriptografada = passwordEncoder.encode(usuario.getPassword());
+//		usuario.setPassword(senhaCriptografada);
+//		return serviceImpl.logar(usuario);
+//	}
 }

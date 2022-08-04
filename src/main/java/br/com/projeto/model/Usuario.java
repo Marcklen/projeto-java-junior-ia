@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +29,11 @@ public class Usuario {
 	private String name;
 	
 	@Column(name = "login", unique = true, nullable = false)
+	@NotEmpty(message = "campo LOGIN é obrigatorio")
 	private String login;
 	
 	@Column(name = "password", nullable = false)
+	@NotEmpty(message = "campo PASSWORD é obrigatorio")
 	private String password;
 	
 	@Column(name = "created_date", nullable = false)
@@ -42,7 +45,7 @@ public class Usuario {
 	@Column(name = "email", unique = true, nullable = false)
 	private String email;
 
-	//@Column(name = "admin", nullable = false)
-	//private String admin;
+	@Column(name = "admin", nullable = false)
+	private Boolean admin;
 
 }

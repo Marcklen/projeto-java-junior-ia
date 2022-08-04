@@ -44,4 +44,6 @@ public class UsuarioDTO {
 	@Email(message = "Email inválido")
 	@NotBlank(message = "Campo não informado")
 	private String email;
+	
+	private Boolean admin;
 }
