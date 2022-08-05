@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UsuarioDTO {
-	
+
 	private Integer id;
 
 	@NotBlank(message = "Campo não informado")
@@ -46,4 +46,8 @@ public class UsuarioDTO {
 	private String email;
 	
 	private Boolean admin;
+	
+	public UsuarioDTO(int i, String string, String string2, String string3, String string4, String string5, boolean b) {
+		// TODO Auto-generated constructor stub
+	}
 }

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "TB_USUARIO")
 public class Usuario {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -48,4 +48,16 @@ public class Usuario {
 	@Column(name = "admin", nullable = false)
 	private Boolean admin;
 
+	//usuario de testes
+	public Usuario(Integer id, String name, String login, String password, LocalDate createdDate, String email, boolean admin) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.id = id;
+		this.name = name;
+		this.login = login;
+		this.password = password;
+		this.createdDate = createdDate;
+		this.email = email;
+		this.admin = admin;
+	}
 }
