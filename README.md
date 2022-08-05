@@ -6,8 +6,12 @@ docker run --name projetoatlantico-db -p 5432:5432 -e POSTGRES_DB=projetoatlanti
 
 ## - Implementados
 
-CRUD de usuários , Documentação da API , Conteinerização Docker , Deploy no Heroku e Testes Unitários (JUnit5 - Classe de Implementação do Service).
+CRUD de usuários , Documentação da API , Conteinerização Docker , Deploy no Heroku e Testes Unitários (JUnit5 - Classe de Implementação do Service) e Segurança da API (inMemory).
 
 ## - A Implementar
 
-Front-End com Angular 8, Endpoint de Email e Segurança da API.
+Front-End com Angular 8, Endpoint de Email.
+
+## Segurança
+#User -> marcklen
+#Pass -> 123
