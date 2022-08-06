@@ -31,11 +31,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //			.passwordEncoder(passwordEncoder());
 		
 		auth.inMemoryAuthentication()
-			.passwordEncoder(passwordEncoder())
 			.withUser("marcklen")
 			.password(passwordEncoder().encode("123"))
-			.roles("ADMIN");
-			
+			.roles("ADMIN")
+			.and()
+			.withUser("user")
+			.password(passwordEncoder().encode("321"))
+			.roles("USER")
+			.and()
+			.passwordEncoder(passwordEncoder());			
 	}
 	
 //	/**
