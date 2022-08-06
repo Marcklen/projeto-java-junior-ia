@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -37,19 +38,42 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			
 	}
 	
-	//autorização
+//	/**
+//	*autorização
+//  */
+//	@Override
+//	protected void configure(HttpSecurity http) throws Exception {
+//		http
+//			.csrf().disable() // desabilitado pois é uma API REST Stateless
+//			.authorizeRequests()
+//				.antMatchers("/clientes/**")
+//					.hasAnyRole("USER", "ADMIN")
+//				.antMatchers("/clientes/logar**")
+//					.hasRole("ADMIN")
+//				.antMatchers(HttpMethod.POST, "/cliente/logar**")
+//					.permitAll().anyRequest().authenticated()
+//				.and()
+//					.httpBasic();
+//	}
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http
-			.csrf().disable() // desabilitado pois é uma API REST Stateless
-			.authorizeRequests()
-				.antMatchers("/clientes/**")
-					.hasAnyRole("USER", "ADMIN")
-				.antMatchers("/clientes/logar**")
-					.hasRole("ADMIN")
-				.antMatchers(HttpMethod.POST, "/cliente/logar**")
-					.permitAll().anyRequest().authenticated()
-				.and()
-					.httpBasic();
+		// TODO Auto-generated method stub
+		//super.configure(http);
+		http.csrf().disable().authorizeRequests()
+        	.antMatchers("/swagger-ui.html").permitAll()
+        	.antMatchers("/swagger-resources/**").permitAll()
+        	.antMatchers("/webjars/**").permitAll()
+        	.antMatchers("/v2/api-docs/**").permitAll()
+        	.antMatchers("/").permitAll()
+        	.antMatchers("/csrf").permitAll()
+        	.antMatchers("/*.js").permitAll()
+        	.antMatchers("/*.css").permitAll()
+        	.antMatchers("/*.ico").permitAll()
+        	.antMatchers("/*.png").permitAll()
+        	.anyRequest().authenticated()
+        	.and().httpBasic()
+        	.and()
+        	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 }
