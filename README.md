@@ -1,14 +1,14 @@
 <h1 align="center"> Projeto Java Junior IA </h1>
 
-##Run Docker Database
+## 🐳 Run Docker Database
 
 docker run --name projetoatlantico-db -p 5432:5432 -e POSTGRES_DB=projetoatlantico -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=123 -d postgres:10-alpine
 
-## - Implementados
+## ✔ Implementados
 
 CRUD de usuários , Documentação da API , Conteinerização Docker , Deploy no Heroku e Testes Unitários (JUnit5 - Classe de Implementação do Service) e Segurança da API (inMemory).
 
-## - A Implementar
+## 🔨 A Implementar
 
 Front-End com Angular 8, Endpoint de Email.
 
