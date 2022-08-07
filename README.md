@@ -1,4 +1,4 @@
-# projeto-java-junior-ia
+<h1 align="center"> Projeto Java Junior IA </h1>
 
 ##Run Docker Database
 
@@ -12,6 +12,13 @@ CRUD de usuários , Documentação da API , Conteinerização Docker , Deploy no
 
 Front-End com Angular 8, Endpoint de Email.
 
-## Segurança
-#User -> marcklen
-#Pass -> 123
+
+## 📁 Acesso ao projeto
+
+<li> <b> https://cloud-projeto-ia.herokuapp.com/swagger-ui.html </b> 
+<li> <b> User: </b> marcklen
+<li> <b> Pass: </b> 123
+
+<p align="center">
+<img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
+</p>
